@@ -1,4 +1,8 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import { Outlet } from "react-router";
 import AppSideBar from "./component/AppSideBar";
 
@@ -6,12 +10,12 @@ function ProtectedLayout() {
   return (
     <SidebarProvider>
       <AppSideBar></AppSideBar>
-      <main>
-        <SidebarTrigger></SidebarTrigger>
-        <div className="m-6">
+      <SidebarInset>
+        <div className="mx-6 my-6">
+          <SidebarTrigger></SidebarTrigger>
           <Outlet></Outlet>
         </div>
-      </main>
+      </SidebarInset>
     </SidebarProvider>
   );
 }
