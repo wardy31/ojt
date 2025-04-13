@@ -195,7 +195,7 @@ function AppSideBar() {
             <SidebarGroupLabel>Menu Folder</SidebarGroupLabel>
             <SidebarGroupAction
               title="Add Folder"
-              className=" bg-blue-800 text-white hover:bg-blue-800 hover:text-white"
+              className=" bg-primary rounded-sm text-white hover:bg-blue-800 hover:text-white"
               onClick={() => {
                 handleClear();
                 handleAddDialog();
