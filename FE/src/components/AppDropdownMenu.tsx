@@ -19,11 +19,19 @@ function AppDropdownMenu({
   onOpenChange,
   onChangeId,
   handleDeleteDialog,
+  isPath,
 }) {
+  console.log("isPath", isPath);
+
   return (
     <DropdownMenu open={open} onOpenChange={onOpenChange}>
-      <DropdownMenuTrigger asChild>
-        <SidebarMenuAction onClick={onChangeId}>
+      <DropdownMenuTrigger asChild className="cursor-pointer">
+        <SidebarMenuAction
+          className={`text-white hover:text-white hover:bg-indigo-700 ${
+            isPath ? "bg-white text-black" : ""
+          }`}
+          onClick={onChangeId}
+        >
           <MoreHorizontal />
         </SidebarMenuAction>
       </DropdownMenuTrigger>

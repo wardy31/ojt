@@ -8,11 +8,10 @@ import AppSideBar from "./component/AppSideBar";
 
 function ProtectedLayout() {
   return (
-    <SidebarProvider>
+    <SidebarProvider open={true}>
       <AppSideBar></AppSideBar>
       <SidebarInset>
         <div className="mx-6 my-6">
-          <SidebarTrigger></SidebarTrigger>
           <Outlet></Outlet>
         </div>
       </SidebarInset>

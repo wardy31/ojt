@@ -7,6 +7,7 @@ import {
   SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuButton,
@@ -22,11 +23,12 @@ import {
 } from "lucide-react";
 import axiosConfig from "../../config/axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useDialog from "@/hooks/useDialog";
 import AppDialog from "@/components/dialog/AppDialog";
 import useData from "@/hooks/useData";
 import AppDropdownMenu from "@/components/AppDropdownMenu";
+import logo from "../../assets/logo.png";
 
 interface DataType {
   id: number;
@@ -34,6 +36,8 @@ interface DataType {
 }
 
 function AppSideBar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [fetchData, setFetchData] = useState<DataType[]>([]);
   const { data, handleDataChange, handleClear } = useData({
     name: "",
@@ -107,6 +111,7 @@ function AppSideBar() {
       setSuccessLoading(false);
       handleDeleteDialog();
       setId(0);
+      navigate("/folders");
     } catch (error) {}
   };
   // Delete
@@ -118,10 +123,6 @@ function AppSideBar() {
     })();
   }, [success]);
 
-  if (!fetchData.length) {
-    return;
-  }
-  console.log(id);
   return (
     <>
       {addDialog && (
@@ -170,21 +171,33 @@ function AppSideBar() {
         ></AppDialog>
       )}
 
-      <Sidebar variant="inset">
-        <SidebarContent>
+      <Sidebar variant="inset" className="bg-indigo-700">
+        <SidebarHeader className="bg-indigo-700">
+          <div className="flex items-center justify-baseline">
+            <img src={logo} alt="" className="w-20 h-20" />
+            <span className="text-white font-bold text-2xl">VPAS</span>
+          </div>
+        </SidebarHeader>
+        <SidebarContent className="bg-indigo-700">
           <SidebarGroup>
-            <SidebarGroupLabel>Navigate</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-white">
+              Navigate
+            </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem key={"Dashboard"}>
                   <SidebarMenuButton
                     asChild
-                    className=" hover:bg-blue-800 hover:text-white"
+                    className={`text-white hover:bg-white hover:text-black ${
+                      location.pathname == "/dashboard"
+                        ? "bg-white text-black"
+                        : ""
+                    }`}
                   >
-                    <a href="#">
+                    <Link to={`/dashboard`}>
                       <LayoutDashboardIcon></LayoutDashboardIcon>
                       <span>{"Dashboard"}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>
@@ -192,7 +205,9 @@ function AppSideBar() {
           </SidebarGroup>
 
           <SidebarGroup>
-            <SidebarGroupLabel>Menu Folder</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-white">
+              Menu Folder
+            </SidebarGroupLabel>
             <SidebarGroupAction
               title="Add Folder"
               className=" bg-primary rounded-sm text-white hover:bg-blue-800 hover:text-white"
@@ -201,7 +216,8 @@ function AppSideBar() {
                 handleAddDialog();
               }}
             >
-              <Plus></Plus> <span className="sr-only">Add Folder</span>
+              <Plus className="text-white"></Plus>{" "}
+              <span className="sr-only">Add Folder</span>
             </SidebarGroupAction>
             <SidebarGroupContent>
               <SidebarMenu>
@@ -209,7 +225,11 @@ function AppSideBar() {
                   <SidebarMenuItem key={m?.id}>
                     <SidebarMenuButton
                       asChild
-                      className=" hover:bg-blue-800 hover:text-white"
+                      className={`text-white hover:bg-white hover:text-black ${
+                        location.pathname == `/folders/${m.id}`
+                          ? "bg-white text-black"
+                          : ""
+                      } `}
                     >
                       <Link to={`/folders/${m?.id}`}>
                         <Folder />
@@ -218,13 +238,13 @@ function AppSideBar() {
                     </SidebarMenuButton>
 
                     <AppDropdownMenu
+                      isPath={location.pathname == `/folders/${m.id}`}
                       open={dropdown && id === m.id}
                       onChangeId={() => setId(m.id)}
                       onOpenChange={(open: boolean) => {
                         setDropdown(open);
                         if (!open) {
                           setId(0);
-                          console.log("GG");
                         }
                       }}
                       handleEditDialog={() => {
@@ -248,9 +268,16 @@ function AppSideBar() {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
-        <SidebarFooter>
-          <span className="text-center">Welcome Admin!</span>
-          <Button>Logout</Button>
+        <SidebarFooter className="bg-indigo-700 ">
+          <span className="text-center text-white">Welcome Admin!</span>
+          <Button
+            className="bg-white text-indigo-700 hover:bg-indigo-50 "
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Logout
+          </Button>
         </SidebarFooter>
       </Sidebar>
     </>
