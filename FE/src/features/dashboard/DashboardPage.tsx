@@ -9,7 +9,6 @@ function DashboardPage() {
   useEffect(() => {
     (async () => {
       const { data: folderData } = await axios.get("folders?isParent=true");
-      console.log(folderData);
       setData(folderData);
     })();
   }, []);
@@ -17,7 +16,9 @@ function DashboardPage() {
     <div>
       <div className="my-6">
         {/* <h2 className="uppercase text-2xl font-bold text-gray-600">Dashboard</h2> */}
-        <h1 className="text-center text-4xl text-indigo-700 font-bold my-16">Hi! Welcome to Dashboard</h1>
+        <h1 className="text-center text-4xl text-indigo-700 font-bold my-16">
+          Hi! Welcome to Dashboard
+        </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {data.map((m: { id?: string; name?: string }) => (
             <Card key={m?.id}>

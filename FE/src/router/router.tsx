@@ -1,7 +1,6 @@
 import AccountPage from "@/features/account/AccountPage";
 import Login from "@/features/auth/container/Login";
 import DashboardPage from "@/features/dashboard/DashboardPage";
-import FIleViewer from "@/features/folders/components/FIleViewer";
 import FolderPage from "@/features/folders/FolderPage";
 import EmptyPage from "@/layout/component/EmptyPage";
 import ProtectedLayout from "@/layout/ProtectedLayout";
@@ -20,10 +19,10 @@ const router = createBrowserRouter([
         path: "dashboard",
         Component: DashboardPage,
       },
-      // {
-      //   path: "account",
-      //   Component: AccountPage,
-      // },
+      {
+        path: "account",
+        Component: AccountPage,
+      },
       {
         path: "folders/",
         Component: EmptyPage,
@@ -31,12 +30,7 @@ const router = createBrowserRouter([
       {
         path: "folders/:folderId",
         Component: FolderPage,
-      },
-
-      // {
-      //   path: "folders/:folderId/file-viewer",
-      //   Component: FIleViewer,
-      // },
+      }  
     ],
   },
 ]);

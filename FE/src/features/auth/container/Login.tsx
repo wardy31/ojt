@@ -18,9 +18,13 @@ function Login() {
   const handleSubmit = async () => {
     try {
       const { data } = await axios.post("login", form);
-      localStorage.setItem("token", data.message);
-      navigate("/dashboard");
-      console.log(data);
+      if (data.status === 400) {
+        alert("Wrong Username or Password")
+      } else {
+        localStorage.setItem("token", data.message);
+        navigate("/dashboard");
+      }
+      console.log(data.status);
     } catch (error) {
       // console.log(error?.response!.data);
     }

@@ -201,7 +201,7 @@ function AppSideBar() {
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-                {/* <SidebarMenuItem key={"Account"}>
+                <SidebarMenuItem key={"Account"}>
                   <SidebarMenuButton
                     asChild
                     className={`text-white hover:bg-white hover:text-black ${
@@ -212,10 +212,10 @@ function AppSideBar() {
                   >
                     <Link to={`/account`}>
                       <CircleUserRound></CircleUserRound>
-                      <span>{"My Account"}</span>
+                      <span>{"Account Setting"}</span>
                     </Link>
                   </SidebarMenuButton>
-                </SidebarMenuItem> */}
+                </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
@@ -289,6 +289,7 @@ function AppSideBar() {
           <Button
             className="bg-white text-indigo-700 hover:bg-indigo-50 "
             onClick={() => {
+              localStorage.removeItem("token");
               navigate("/login");
             }}
           >
