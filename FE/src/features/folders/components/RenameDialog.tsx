@@ -38,13 +38,13 @@ function RenameDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="capitalize">
+          <DialogTitle className="capitalize text-indigo-700">
             {title} {type}
           </DialogTitle>
         </DialogHeader>
 
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label htmlFor="name" className="">
+        <div className="grid w-full max-w-sm items-center gap-1.5 py-3">
+          <Label htmlFor="name" className="text-gray-600">
             Name
           </Label>
           <Input
@@ -55,7 +55,7 @@ function RenameDialog({
           />
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={onHandleSubmit} disabled={loading}>
+          <Button type="submit" onClick={onHandleSubmit} disabled={loading} className="bg-indigo-700 hover:bg-indigo-600">
             Confirm
           </Button>
         </DialogFooter>

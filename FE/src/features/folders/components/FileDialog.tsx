@@ -27,7 +27,7 @@ function FileDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
+          <DialogTitle className=" text-indigo-700">{title}</DialogTitle>
           <DialogDescription>
             {isDelete && "Are you sure to delete this file?"}
           </DialogDescription>
@@ -36,7 +36,7 @@ function FileDialog({
         {!isDelete && (
           <>
             <div className="grid w-full max-w-sm items-center gap-1.5">
-              <Label htmlFor="name" className="">
+              <Label htmlFor="name" className="text-gray-600">
                 File Name
               </Label>
               <Input
@@ -47,7 +47,7 @@ function FileDialog({
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
-              <Label htmlFor="file" className="">
+              <Label htmlFor="file" className="text-gray-600">
                 Upload File
               </Label>
               <Input
@@ -61,7 +61,7 @@ function FileDialog({
           </>
         )}
         <DialogFooter>
-          <Button type="submit" onClick={onHandleSubmit} disabled={loading}>
+          <Button type="submit" onClick={onHandleSubmit} disabled={loading} className="bg-indigo-700 hover:bg-indigo-600">
             Confirm
           </Button>
         </DialogFooter>

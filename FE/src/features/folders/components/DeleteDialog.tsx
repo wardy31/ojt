@@ -17,7 +17,7 @@ interface props {
   loading: boolean;
   isDelete?: boolean;
   onHandleChange?: () => void;
-  onOpenChange: (d:any) => void;
+  onOpenChange: (d: any) => void;
   onHandleSubmit: () => void;
 }
 
@@ -33,13 +33,19 @@ function DeleteDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>
-            {isDelete && "Are you sure to delete this file?"}
-          </DialogDescription>
+          <DialogTitle className="capitalize text-indigo-700">
+            {title}
+          </DialogTitle>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
+        <span> {isDelete && "Are you sure to delete?"}</span>
         <DialogFooter>
-          <Button type="submit" onClick={onHandleSubmit} disabled={loading}>
+          <Button
+            type="submit"
+            onClick={onHandleSubmit}
+            disabled={loading}
+            className="bg-indigo-700 hover:bg-indigo-600"
+          >
             Confirm
           </Button>
         </DialogFooter>

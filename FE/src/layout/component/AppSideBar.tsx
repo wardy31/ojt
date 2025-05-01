@@ -14,6 +14,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
+  CircleUserRound,
   Ellipsis,
   Folder,
   LayoutDashboardIcon,
@@ -200,6 +201,21 @@ function AppSideBar() {
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+                {/* <SidebarMenuItem key={"Account"}>
+                  <SidebarMenuButton
+                    asChild
+                    className={`text-white hover:bg-white hover:text-black ${
+                      location.pathname == "/account"
+                        ? "bg-white text-black"
+                        : ""
+                    }`}
+                  >
+                    <Link to={`/account`}>
+                      <CircleUserRound></CircleUserRound>
+                      <span>{"My Account"}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem> */}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

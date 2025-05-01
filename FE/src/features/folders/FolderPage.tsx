@@ -187,6 +187,7 @@ function FolderPage() {
       const { data } = await axios.get(`folders/${folderId}/files-folders`);
       await setGetData(data?.combineData);
       await setTitle(data?.name);
+      console.log(data?.dirPath);
       setGetLoading(false);
     })();
   }, [folderId, loading, renameLoading == false, deleteLoading == false]);

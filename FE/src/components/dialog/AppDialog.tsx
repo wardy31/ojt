@@ -25,13 +25,15 @@ function AppDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>{isDelete && "Are you sure to delete this file?"}</DialogDescription>
+          <DialogTitle className="text-indigo-700">{title}</DialogTitle>
+          <DialogDescription>
+            {isDelete && "Are you sure to delete this file?"}
+          </DialogDescription>
         </DialogHeader>
 
         {!isDelete && (
           <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="name" className="">
+            <Label htmlFor="name" className="text-gray-600">
               Name
             </Label>
             <Input
@@ -43,7 +45,12 @@ function AppDialog({
           </div>
         )}
         <DialogFooter>
-          <Button type="submit" onClick={handleSubmit} disabled={loading}>
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            disabled={loading}
+            className="bg-indigo-700 hover:bg-indigo-600"
+          >
             Confirm
           </Button>
         </DialogFooter>

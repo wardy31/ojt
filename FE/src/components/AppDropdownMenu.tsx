@@ -4,14 +4,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Ellipsis,
-  Folder,
-  LayoutDashboardIcon,
-  MapPinPlusInside,
-  MoreHorizontal,
-  Plus,
-} from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import { SidebarMenuAction } from "./ui/sidebar";
 function AppDropdownMenu({
   handleEditDialog,
@@ -21,7 +14,6 @@ function AppDropdownMenu({
   handleDeleteDialog,
   isPath,
 }) {
-  console.log("isPath", isPath);
 
   return (
     <DropdownMenu open={open} onOpenChange={onOpenChange}>

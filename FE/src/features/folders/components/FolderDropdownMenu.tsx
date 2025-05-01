@@ -24,7 +24,7 @@ function FolderDropdownMenu({
 }: props) {
   return (
     <DropdownMenu open={open} onOpenChange={onOpenChange}>
-      <DropdownMenuTrigger >
+      <DropdownMenuTrigger className="hover:text-indigo-700">
         <EllipsisVertical></EllipsisVertical>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
